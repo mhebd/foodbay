@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id Int @id @default(autoincrement())
+  name String 
+  email String @unique
+  password String
+  phone String @default("+8801XXXXXXXXX")
+  gravatar String
+  role String @default("USER")
+  verified Boolean @default(false)
+  address Address?
+  created DateTime @default(now())
+}
+
+model Address {
+  id Int @id @default(autoincrement())
+  country String?
+  city String?
+  zip Int?
+  address String?
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  name String 
+  price Int 
+  image String
+  featured Boolean @default(false)
+  special Boolean @default(false)
+  discount Int @default(0)
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int 
+  created DateTime @default(now())
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String @unique
+  products Product[]
+}
+
+model FeaturedCard {
+  id Int @id @default(autoincrement())
+  title String
+  caption String
+  icon String
+  created DateTime @default(now())
+}
+
+model Slider {
+  id Int @id @default(autoincrement())
+  image String 
+  caption String
+  created DateTime @default(now())
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  name String
+  image String
+  opinion String
+  created DateTime @default(now())
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  
+  created DateTime @default(now())
+}
