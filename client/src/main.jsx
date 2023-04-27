@@ -7,9 +7,7 @@ import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import rootReducer from "./reducers/index";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
+    <App />
+  </Provider>
 );

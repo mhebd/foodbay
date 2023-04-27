@@ -16,7 +16,6 @@ import TableWrapperLayout from "./layouts/TableWrapperLayout";
 
 function FeaturedCards() {
   const featuredCards = useSelector((state) => state.featured.featuredCards);
-  console.log(useSelector((state) => state.featured));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +25,8 @@ function FeaturedCards() {
   return (
     <TableWrapperLayout
       name={"All featured cards"}
-      link={"featured-card/create-featured-card"}>
+      link={"featured-card/create-featured-card"}
+      btnText={"Create Featured Card"}>
       <table className='table table-bordered table-striped table-hover'>
         <thead className='table-dark'>
           <tr>

@@ -5,6 +5,7 @@ import featuredReducer from "./featuredReducer";
 import productReducer from "./productReducer";
 import sliderReducer from "./sliderReducer";
 import reviewReducer from "./reviewReducer";
+import errorReducer from "./errorReducer";
 
 export default combineReducers({
   user: userReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   slider: sliderReducer,
   review: reviewReducer,
   featured: featuredReducer,
+  error: errorReducer,
 });

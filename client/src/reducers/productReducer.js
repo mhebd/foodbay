@@ -2,7 +2,6 @@ import t from "../utility/types";
 
 const initialState = {
   products: [],
-  error: null,
   message: "",
 };
 
@@ -43,13 +42,6 @@ const productReducer = (state = initialState, { type, payload }) => {
           p.id == payload.id ? payload.data.product : p
         ),
         message: "Product updated successfully",
-      };
-      break;
-
-    case t.ERROR:
-      return {
-        ...state,
-        error: { ...payload },
       };
       break;
 

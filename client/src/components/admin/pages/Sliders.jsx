@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import TableRowForm from "../../reusable/TableRowForm";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../reusable/Button";
@@ -16,7 +15,10 @@ function Sliders() {
   }, []);
 
   return (
-    <TableWrapperLayout name={"All slides"} link={"slider/create-slider"}>
+    <TableWrapperLayout
+      name={"All slides"}
+      link={"slider/create-slider"}
+      btnText={"Create Slide"}>
       <table className='table table-bordered table-striped table-hover'>
         <thead className='table-dark'>
           <tr>

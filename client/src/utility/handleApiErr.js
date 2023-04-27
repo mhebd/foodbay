@@ -5,4 +5,10 @@ export default (dispatch, err) => {
     type: t.ERROR,
     payload: err.response.data,
   });
+  setTimeout(() => {
+    dispatch({
+      type: t.REMOVE_ERROR,
+      payload: "",
+    });
+  }, 500);
 };

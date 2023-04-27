@@ -2,7 +2,7 @@ import t from "../utility/types";
 const initialState = {
   user: null,
   token: null,
-  error: null,
+  users: [],
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
@@ -31,10 +31,11 @@ const userReducer = (state = initialState, { type, payload }) => {
       };
       break;
 
-    case t.ERROR:
+    case t.FETCH_USERS:
       return {
         ...state,
-        error: { ...payload },
+        ...payload,
+        error: null,
       };
       break;
 

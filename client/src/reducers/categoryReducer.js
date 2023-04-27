@@ -2,7 +2,6 @@ import t from "../utility/types";
 const initialState = {
   categories: [],
   category: null,
-  error: null,
 };
 
 const categoryReducer = (state = initialState, { type, payload }) => {
@@ -41,13 +40,6 @@ const categoryReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: null,
         ...payload,
-      };
-      break;
-
-    case t.ERROR:
-      return {
-        ...state,
-        error: { ...payload },
       };
       break;
 

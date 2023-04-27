@@ -7,14 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Products() {
   const products = useSelector((state) => state.product.products);
-  console.log(useSelector((state) => state.product));
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
   return (
-    <TableWrapperLayout name='All Products' link='product/create-product'>
+    <TableWrapperLayout
+      name='All Products'
+      link='product/create-product'
+      btnText='Create Product'>
       <table className='table table-bordered table-striped table-hover'>
         <thead className='table-dark'>
           <tr>

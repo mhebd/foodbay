@@ -12,7 +12,6 @@ import TableWrapperLayout from "./layouts/TableWrapperLayout";
 
 function Categories() {
   const categories = useSelector((state) => state.category.categories);
-  console.log(useSelector((state) => state.category));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +19,10 @@ function Categories() {
   }, []);
 
   return (
-    <TableWrapperLayout name='All Categories' link='category/create-category'>
+    <TableWrapperLayout
+      name='All Categories'
+      link='category/create-category'
+      btnText='Create Category'>
       <table className='table table-bordered table-striped table-hover'>
         <thead className='table-dark'>
           <tr>

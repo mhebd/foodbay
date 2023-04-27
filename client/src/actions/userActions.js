@@ -1,4 +1,5 @@
 import Axios from "../utility/Axios";
+import handleApiErr from "../utility/handleApiErr";
 import t from "../utility/types";
 
 export const createUser = (data) => async (dispatch) => {
@@ -8,11 +9,8 @@ export const createUser = (data) => async (dispatch) => {
       type: t.CREATE_USER,
       payload: res.data.data,
     });
-  } catch (error) {
-    dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
-    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
   }
 };
 
@@ -23,11 +21,8 @@ export const loginUser = (data) => async (dispatch) => {
       type: t.LOGIN_USER,
       payload: res.data.data,
     });
-  } catch (error) {
-    dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
-    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
   }
 };
 
@@ -38,10 +33,19 @@ export const loadUser = () => async (dispatch) => {
       type: t.LOAD_USER,
       payload: res.data.data,
     });
-  } catch (error) {
+  } catch (err) {
+    handleApiErr(dispatch, err);
+  }
+};
+
+export const fetchUsers = () => async (dispatch) => {
+  try {
+    const res = await Axios.get("/user");
     dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
+      type: t.FETCH_USERS,
+      payload: res.data.data,
     });
+  } catch (err) {
+    handleApiErr(dispatch, err);
   }
 };

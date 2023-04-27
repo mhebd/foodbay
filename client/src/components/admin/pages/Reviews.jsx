@@ -8,7 +8,6 @@ import TableWrapperLayout from "./layouts/TableWrapperLayout";
 
 function Reviews() {
   const reviews = useSelector((state) => state.review.reviews);
-  console.log(useSelector((state) => state.review));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +15,10 @@ function Reviews() {
   }, []);
 
   return (
-    <TableWrapperLayout name='All Reviews' link='review/create-review'>
+    <TableWrapperLayout
+      name='All Reviews'
+      link='review/create-review'
+      btnText='Create Review'>
       <table className='table table-bordered table-striped table-hover'>
         <thead className='table-dark'>
           <tr>

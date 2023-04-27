@@ -34,8 +34,6 @@ function ProductForm() {
     }
   };
 
-  console.log(product);
-
   const submitHandler = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -99,7 +97,11 @@ function ProductForm() {
             value={category}
             onChange={handleChange}>
             {categories.length > 0 &&
-              categories.map((c) => <option value={c.id}>{c.name}</option>)}
+              categories.map((c) => (
+                <option key={Math.random()} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
           </select>
         </InputWrapper>
 

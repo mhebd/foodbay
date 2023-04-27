@@ -18,7 +18,6 @@ export const fetchProducts = () => async (dispatch) => {
 export const createProduct = (data) => async (dispatch) => {
   try {
     const res = await Axios.post("/product", data);
-    console.log(res.data.data);
     dispatch({
       type: t.CREATE_PRODUCT,
       payload: res.data.data,

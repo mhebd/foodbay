@@ -2,7 +2,6 @@ import t from "../utility/types";
 
 const initialState = {
   reviews: [],
-  error: null,
   message: "",
 };
 
@@ -40,12 +39,6 @@ const reviewReducer = (state = initialState, { type, payload }) => {
           r.id === payload.id ? payload.data.review : r
         ),
         message: payload.message,
-      };
-
-    case t.ERROR:
-      return {
-        ...state,
-        error: { ...payload },
       };
 
     default:

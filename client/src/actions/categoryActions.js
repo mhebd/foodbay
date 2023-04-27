@@ -1,4 +1,5 @@
 import Axios from "../utility/Axios";
+import handleApiErr from "../utility/handleApiErr";
 import t from "../utility/types";
 
 export const fetchCategories = () => async (dispatch) => {
@@ -9,11 +10,8 @@ export const fetchCategories = () => async (dispatch) => {
       type: t.FETCH_CATEGORIES,
       payload: res.data.data,
     });
-  } catch (error) {
-    dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
-    });
+  } catch (err) {
+    handleApiErr(dispatch, err)
   }
 };
 
@@ -27,11 +25,8 @@ export const createCategory = (data) => async (dispatch) => {
       type: t.CREATE_CATEGORY,
       payload: res.data,
     });
-  } catch (error) {
-    dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
-    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
   }
 };
 
@@ -44,11 +39,8 @@ export const deleteCategory = (id) => async (dispatch) => {
       type: t.DELETE_CATEGORY,
       payload: res.data,
     });
-  } catch (error) {
-    dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
-    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
   }
 };
 
@@ -60,10 +52,7 @@ export const fetchCategoryWithProduct = (id) => async (dispatch) => {
       type: t.FETCH_CATEGORY_WP,
       payload: res.data.data,
     });
-  } catch (error) {
-    dispatch({
-      type: t.ERROR,
-      payload: error.response.data,
-    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
   }
 };

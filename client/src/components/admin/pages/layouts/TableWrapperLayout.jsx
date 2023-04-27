@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TableRowForm from "../../../reusable/TableRowForm";
 
-function TableWrapperLayout({ name, link, children }) {
+function TableWrapperLayout({ name, link, btnText, children }) {
   return (
     <div className='card mb-4'>
       <div className='card-header d-flex justify-content-between'>
@@ -12,7 +12,7 @@ function TableWrapperLayout({ name, link, children }) {
         </div>
         {link && (
           <Link to={`/dashboard/${link}`} className='btn btn-dark'>
-            Create Review
+            {btnText}
           </Link>
         )}
       </div>

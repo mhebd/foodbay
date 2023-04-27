@@ -2,7 +2,6 @@ import t from "../utility/types";
 
 const initialState = {
   slides: [],
-  error: null,
   message: "",
 };
 
@@ -40,12 +39,6 @@ const sliderReducer = (state = initialState, { type, payload }) => {
           s.id === payload.id ? payload.data.slider : s
         ),
         message: payload.message,
-      };
-
-    case t.ERROR:
-      return {
-        ...state,
-        error: { ...payload },
       };
 
     default:

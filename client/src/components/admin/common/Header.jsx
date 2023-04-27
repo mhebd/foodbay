@@ -71,11 +71,11 @@ function Header() {
               aria-haspopup='true'
               aria-expanded='false'>
               <div className='avatar avatar-md'>
-                <img
+                {/* <img
                   className='avatar-img'
-                  src='assets/img/avatars/8.jpg'
+                  src='/src/components/admin/assets/img/avatars/8.jpg'
                   alt='user@email.com'
-                />
+                /> */}
               </div>
             </a>
             <div className='dropdown-menu dropdown-menu-end pt-0'>

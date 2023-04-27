@@ -1,7 +1,6 @@
 import t from "../utility/types";
 const initialState = {
   featuredCards: [],
-  error: null,
   message: "",
 };
 
@@ -39,13 +38,6 @@ const featuredReducer = (state = initialState, { type, payload }) => {
         ...state,
         error: null,
         featuredCards: [...state.featuredCards, payload.data.featuredCard],
-      };
-      break;
-
-    case t.ERROR:
-      return {
-        ...state,
-        error: { ...payload },
       };
       break;
 
