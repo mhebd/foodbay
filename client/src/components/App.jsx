@@ -8,6 +8,7 @@ import { loadUser } from "../actions/userActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DashboardRoutes from "./DashboardRoutes";
+import UserRoutes from "./UserRoutes";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <DashboardRoutes />
+      <UserRoutes />
       <BrowserRouter>
         <Routes>
           <Route element={<AuthLayout />}>
