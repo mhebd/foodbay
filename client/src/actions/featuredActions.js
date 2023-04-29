@@ -1,5 +1,6 @@
 import Axios from "../utility/Axios";
 import handleApiErr from "../utility/handleApiErr";
+import removeMsg from "../utility/removeMsg";
 import t from "../utility/types";
 
 export const fetchFeatureds = () => async (dispatch) => {
@@ -18,11 +19,11 @@ export const fetchFeatureds = () => async (dispatch) => {
 export const createFeaturedCard = (data) => async (dispatch) => {
   try {
     const res = await Axios.post(`/featured-card`, { ...data });
-    console.log(res.data);
     dispatch({
       type: t.CREATE_FEATURED,
       payload: res.data,
     });
+    removeMsg(dispatch, t.REMOVE_F_C_MSG);
   } catch (err) {
     handleApiErr(dispatch, err);
   }
@@ -35,6 +36,7 @@ export const deleteFeaturedCard = (id) => async (dispatch) => {
       type: t.DELETE_FEATURED,
       payload: id,
     });
+    removeMsg(dispatch, t.REMOVE_F_C_MSG);
   } catch (err) {
     handleApiErr(dispatch, err);
   }
@@ -47,6 +49,7 @@ export const updateFeaturedCard = (id, data) => async (dispatch) => {
       type: t.UPDATE_FEATURED,
       payload: res.data,
     });
+    removeMsg(dispatch, t.REMOVE_F_C_MSG);
   } catch (err) {
     handleApiErr(dispatch, err);
   }

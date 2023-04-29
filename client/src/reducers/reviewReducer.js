@@ -41,6 +41,12 @@ const reviewReducer = (state = initialState, { type, payload }) => {
         message: payload.message,
       };
 
+    case t.REMOVE_REVIEW_MSG:
+      return {
+        ...state,
+        message: "",
+      };
+
     default:
       return state;
   }

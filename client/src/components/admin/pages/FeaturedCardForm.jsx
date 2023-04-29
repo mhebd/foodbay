@@ -15,8 +15,11 @@ function FeaturedCardForm() {
   });
   const { title, icon, caption } = data;
   const message = useSelector((state) => state.featured.message);
-  console.log(message);
   const dispatch = useDispatch();
+
+  if (message != "") {
+    toast.success(message);
+  }
 
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
@@ -30,8 +33,6 @@ function FeaturedCardForm() {
       caption: "",
     });
   };
-
-  if (message) toast(message);
 
   return (
     <FormWrapperLayout heading='Create Featured Card'>

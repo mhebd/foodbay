@@ -13,10 +13,15 @@ import {
   fetchFeatureds,
 } from "../../../actions/featuredActions";
 import TableWrapperLayout from "./layouts/TableWrapperLayout";
+import { toast } from "react-toastify";
 
 function FeaturedCards() {
-  const featuredCards = useSelector((state) => state.featured.featuredCards);
+  const { featuredCards, message } = useSelector((state) => state.featured);
   const dispatch = useDispatch();
+
+  if (message != "") {
+    toast.warn(message);
+  }
 
   useEffect(() => {
     dispatch(fetchFeatureds());

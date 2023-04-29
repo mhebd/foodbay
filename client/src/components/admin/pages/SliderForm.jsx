@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Input from "../../reusable/Input";
 import Button from "../../reusable/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FormWrapperLayout from "./layouts/FormWrapperLayout";
 import InputWrapper from "../../reusable/InputWrapper";
 import { createSlider } from "../../../actions/sliderActions";
+import { toast } from "react-toastify";
 
 function SliderForm() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
+  const message = useSelector((state) => state.slider.message);
+
+  if (message != "") {
+    toast.success(message);
+  }
 
   const captionHandler = (e) => setCaption(e.target.value);
   const imageHandler = (e) => setImage(e.target.files[0]);
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(caption, image);
+
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("image", image);
     dispatch(createSlider(formData));
+
+    setCaption("");
+    setImage("");
   };
 
   return (
@@ -51,7 +60,7 @@ function SliderForm() {
 
         <div className='mb-3'>
           <Button className='btn-primary' type='submit'>
-            Create Category
+            Create Slide
           </Button>
         </div>
       </form>

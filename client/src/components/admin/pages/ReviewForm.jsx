@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormWrapperLayout from "./layouts/FormWrapperLayout";
 import InputWrapper from "../../reusable/InputWrapper";
 import { createReview } from "../../../actions/reviewActions";
+import { toast } from "react-toastify";
 
 function ReviewForm() {
   const [review, setReview] = useState({
@@ -14,6 +15,11 @@ function ReviewForm() {
   const { name, opinion } = review;
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
+  const message = useSelector((state) => state.review.message);
+
+  if (message != "") {
+    toast.success(message);
+  }
 
   const handleChange = (e) =>
     setReview({ ...review, [e.target.name]: e.target.value });
@@ -24,6 +30,11 @@ function ReviewForm() {
     data.append("opinion", opinion);
     data.append("image", image);
     dispatch(createReview(data));
+
+    setReview({
+      name: "",
+      opinion: "",
+    });
   };
 
   return (
@@ -41,15 +52,15 @@ function ReviewForm() {
           />
         </InputWrapper>
         <InputWrapper label='Reviewer opinion'>
-          <Input
-            className='form-control'
-            type='text'
-            onChange={handleChange}
+          <textarea
+            name='opinion'
+            cols='30'
             value={opinion}
-            name={"opinion"}
-            placeholder='Write a category name'
-            required
-          />
+            onChange={handleChange}
+            rows='5'
+            placeholder='Reviewer Opinion'>
+            {/* {opinion} */}
+          </textarea>
         </InputWrapper>
         <InputWrapper label='Reviewer image'>
           <Input
@@ -63,7 +74,7 @@ function ReviewForm() {
 
         <div className='mb-3'>
           <Button className='btn-primary' type='submit'>
-            Create Category
+            Create Review
           </Button>
         </div>
       </form>

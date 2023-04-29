@@ -1,5 +1,6 @@
 import Axios from "../utility/Axios";
 import handleApiErr from "../utility/handleApiErr";
+import removeMsg from "../utility/removeMsg";
 import t from "../utility/types";
 
 export const fetchReviews = () => async (dispatch) => {
@@ -21,6 +22,7 @@ export const createReview = (reviewData) => async (dispatch) => {
       type: t.CREATE_REVIEW,
       payload: res.data,
     });
+    removeMsg(dispatch, t.REMOVE_REVIEW_MSG);
   } catch (err) {
     handleApiErr(dispatch, err);
   }
@@ -33,6 +35,7 @@ export const updateReview = (reviewId, reviewData) => async (dispatch) => {
       type: t.UPDATE_REVIEW,
       payload: res.data,
     });
+    removeMsg(dispatch, t.REMOVE_REVIEW_MSG);
   } catch (err) {
     handleApiErr(dispatch, err);
   }
@@ -45,6 +48,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
       type: t.DELETE_REVIEW,
       payload: reviewId,
     });
+    removeMsg(dispatch, t.REMOVE_REVIEW_MSG);
   } catch (err) {
     handleApiErr(dispatch, err);
   }

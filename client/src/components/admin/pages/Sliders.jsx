@@ -5,10 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../reusable/Button";
 import { deleteSlider, fetchSliders } from "../../../actions/sliderActions";
 import TableWrapperLayout from "./layouts/TableWrapperLayout";
+import { toast } from "react-toastify";
 
 function Sliders() {
-  const slides = useSelector((state) => state.slider.slides);
+  const { slides, message } = useSelector((state) => state.slider);
   const dispatch = useDispatch();
+
+  if (message != "") {
+    toast.warn(message);
+  }
 
   useEffect(() => {
     dispatch(fetchSliders());

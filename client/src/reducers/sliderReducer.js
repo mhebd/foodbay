@@ -14,14 +14,16 @@ const sliderReducer = (state = initialState, { type, payload }) => {
         ...payload,
         message: "",
       };
+      break;
 
     case t.CREATE_SLIDER:
       return {
         ...state,
         error: null,
-        slides: [...state.slides, payload.data.slider],
+        slides: [...state.slides, payload.data.slide],
         message: payload.message,
       };
+      break;
 
     case t.DELETE_SLIDER:
       return {
@@ -30,16 +32,25 @@ const sliderReducer = (state = initialState, { type, payload }) => {
         slides: state.slides.filter((s) => s.id !== payload),
         message: "Slider deleted successfully",
       };
+      break;
 
     case t.UPDATE_SLIDER:
       return {
         ...state,
         error: null,
         slides: state.slides.map((s) =>
-          s.id === payload.id ? payload.data.slider : s
+          s.id === payload.id ? payload.data.slide : s
         ),
         message: payload.message,
       };
+      break;
+
+    case t.REMOVE_SLIDER_MSG:
+      return {
+        ...state,
+        message: "",
+      };
+      break;
 
     default:
       return state;

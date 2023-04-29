@@ -41,6 +41,13 @@ const featuredReducer = (state = initialState, { type, payload }) => {
       };
       break;
 
+    case t.REMOVE_F_C_MSG:
+      return {
+        ...state,
+        message: "",
+      };
+      break;
+
     default:
       return state;
       break;

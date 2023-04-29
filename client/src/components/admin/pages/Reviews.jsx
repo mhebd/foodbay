@@ -5,10 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../reusable/Button";
 import { deleteReview, fetchReviews } from "../../../actions/reviewActions";
 import TableWrapperLayout from "./layouts/TableWrapperLayout";
+import { toast } from "react-toastify";
 
 function Reviews() {
-  const reviews = useSelector((state) => state.review.reviews);
+  const { reviews, message } = useSelector((state) => state.review);
   const dispatch = useDispatch();
+
+  if (message != "") {
+    toast.warn(message);
+  }
 
   useEffect(() => {
     dispatch(fetchReviews());
