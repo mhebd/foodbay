@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFeaturedProducts } from "../../../../actions/productActions";
+import Product from "../../../reusable/Product";
 
 function FeaturedProducts() {
+  const { featuredProducts } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFeaturedProducts());
+  }, []);
+
   return (
     <div className='featured-section-wrapper'>
       <div className='container'>
@@ -23,109 +33,10 @@ function FeaturedProducts() {
           <div className='products-wrapper'>
             <div className='products'>
               <div className='row'>
-                <div className='col-md-4 mb-3'>
-                  <div className='product'>
-                    <div className='card'>
-                      <div className='card-img'>
-                        {/* <img src="image/seeFood/1.jpg" alt=""
-                                                            className="card-img-top img-fluid"> */}
-                      </div>
-
-                      <div className='card-body'>
-                        <a href='single.html' className='view-in-single'>
-                          <h4 className='product-name text-uppercase'>
-                            This is food name
-                          </h4>
-                        </a>
-                        <p className='price lead'>
-                          TK <span>250</span>
-                        </p>
-                        <p className='remove-price'>
-                          <del>
-                            TK<span>500</span>
-                          </del>{" "}
-                          <span className='decrease m3-4'>-50%</span>
-                        </p>
-                        <a
-                          href='#'
-                          className='add-to-cart btn btn-success btn-block text-uppercase'
-                          data-id='1001'>
-                          Add to cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- singe product end --> */}
-
-                <div className='col-md-4 mb-3'>
-                  <div className='product'>
-                    <div className='card'>
-                      <div className='card-img'>
-                        {/* <img src="image/seeFood/2.jpg" alt=""
-                                                            className="card-img-top img-fluid"> */}
-                      </div>
-
-                      <div className='card-body'>
-                        <a href='single.html' className='view-in-single'>
-                          <h4 className='product-name text-uppercase'>
-                            This is food name
-                          </h4>
-                        </a>
-                        <p className='price lead'>
-                          TK <span>250</span>
-                        </p>
-                        <p className='remove-price'>
-                          <del>
-                            TK<span>500</span>
-                          </del>{" "}
-                          <span className='decrease m3-4'>-50%</span>
-                        </p>
-                        <a
-                          href='#'
-                          className='add-to-cart btn btn-success btn-block text-uppercase'
-                          data-id='1002'>
-                          Add to cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- singe product end --> */}
-                <div className='col-md-4 mb-3'>
-                  <div className='product'>
-                    <div className='card'>
-                      <div className='card-img'>
-                        {/* <img src="image/seeFood/3.jpg" alt=""
-                                                            className="card-img-top img-fluid"> */}
-                      </div>
-
-                      <div className='card-body'>
-                        <a href='single.html' className='view-in-single'>
-                          <h4 className='product-name text-uppercase'>
-                            This is food name
-                          </h4>
-                        </a>
-                        <p className='price lead'>
-                          TK <span>250</span>
-                        </p>
-                        <p className='remove-price'>
-                          <del>
-                            TK<span>500</span>
-                          </del>{" "}
-                          <span className='decrease m3-4'>-50%</span>
-                        </p>
-                        <a
-                          href='#'
-                          className='add-to-cart btn btn-success btn-block text-uppercase'
-                          data-id='1003'>
-                          Add to cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- singe product end --> */}
+                <Product
+                  products={featuredProducts}
+                  rootClass='col-lg-3 col-md-4'
+                />
               </div>
             </div>
           </div>

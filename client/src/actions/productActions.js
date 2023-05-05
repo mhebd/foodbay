@@ -2,12 +2,36 @@ import Axios from "../utility/Axios";
 import handleApiErr from "../utility/handleApiErr";
 import t from "../utility/types";
 
-// productActions.js
 export const fetchProducts = () => async (dispatch) => {
   try {
     const res = await Axios.get("/product");
     dispatch({
       type: t.FETCH_PRODUCTS,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
+  }
+};
+
+export const fetchSpecialProducts = () => async (dispatch) => {
+  try {
+    const res = await Axios.get("/product/special");
+    dispatch({
+      type: t.FETCH_SPECIAL_PRODUCTS,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    handleApiErr(dispatch, err);
+  }
+};
+
+export const fetchFeaturedProducts = () => async (dispatch) => {
+  try {
+    const res = await Axios.get("/product/featured");
+    console.log(res.data);
+    dispatch({
+      type: t.FETCH_FEATURED_PRODUCTS,
       payload: res.data.data,
     });
   } catch (err) {

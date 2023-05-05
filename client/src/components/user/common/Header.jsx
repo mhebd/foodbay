@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Header() {
   return (
@@ -12,7 +14,7 @@ function Header() {
                   <ul className='nav justify-content-center justify-content-md-start'>
                     <li className='nav-item'>
                       <a href='tel:+8801521508253' className='nav-link'>
-                        +8801521508253
+                        +8801521458253
                       </a>
                     </li>
                     <li className='nav-item'>
@@ -70,12 +72,14 @@ function Header() {
         <div className='container'>
           <div className='brand-logo mx-auto text-center'>
             <a href='#' className='brand-logo-link'>
-              {/* <img
-                src='image/ns-logo.jpg'
+              <img
                 alt='See Food Logo'
+                src='src/components/user/assets/images/ns-logo.jpg'
                 className='img-fluid'
-                style='max-height: 50px;'
-              /> */}
+                style={{
+                  maxHeight: "50px",
+                }}
+              />
             </a>
           </div>
         </div>
@@ -90,12 +94,14 @@ function Header() {
                 <div className='navbar navbar-expand-lg bg-white'>
                   <div className='navbar-brand d-none d-sm-block'>
                     <a href='#' className='brand-link'>
-                      {/* <img
-                        src='image/ns-logo.jpg'
-                        alt=''
+                      <img
+                        src='src/components/user/assets/images/ns-logo.jpg'
+                        alt='See Food Logo'
                         className='img-fluid'
-                        style='max-height: 50px;'
-                      /> */}
+                        style={{
+                          maxHeight: "50px",
+                        }}
+                      />
                     </a>
                   </div>
                   {/* <!-- navbar brand end --> */}
@@ -108,49 +114,7 @@ function Header() {
                   </button>
                   {/* <!-- navbar toggler button end --> */}
 
-                  <div className='navbar-collapse collapse' id='main-menu'>
-                    <ul className='navbar-nav mx-auto'>
-                      <li className='nav-item'>
-                        <a href='index.html' className='nav-link '>
-                          Home
-                        </a>
-                      </li>
-                      <li className='nav-item dropdown'>
-                        <a
-                          href='#'
-                          className='nav-link active dropdown-toggle'
-                          data-toggle='dropdown'>
-                          shop
-                        </a>
-                        <div className='dropdown-menu'>
-                          <a
-                            href='bangla.html'
-                            className='dropdown-item active'>
-                            Bengali
-                          </a>
-                          <a href='indian.html' className='dropdown-item'>
-                            Indian
-                          </a>
-                          <a href='thai.html' className='dropdown-item'>
-                            Thai
-                          </a>
-                          <a href='chinese.html' className='dropdown-item'>
-                            Chinese
-                          </a>
-                        </div>
-                      </li>
-                      <li className='nav-item'>
-                        <a href='blog.html' className='nav-link'>
-                          blog
-                        </a>
-                      </li>
-                      <li className='nav-item'>
-                        <a href='contact.html' className='nav-link'>
-                          contact
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  <Navbar />
                 </div>
                 {/* <!-- main menu end --> */}
               </div>

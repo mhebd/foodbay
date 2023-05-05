@@ -4,7 +4,6 @@ import { fetchFeatureds } from "../../../../actions/featuredActions";
 
 function FeaturedCards() {
   const cards = useSelector((state) => state.featured.featuredCards);
-  console.log(cards);
   const dispatch = useDispatch();
 
   useEffect(() => {

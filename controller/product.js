@@ -120,3 +120,17 @@ exports.fetchSpecialProduct = asyncHdl(async (req, res, next) => {
 
 	res.status(200).json(new Result(true, '', { products }));
 });
+
+/**
+	=> @GET
+	=> /api/v1/product/featured
+	=> Public
+*/
+exports.fetchFeaturedProduct = asyncHdl(async (req, res, next) => {
+	const products = await prisma.product.findMany({
+		where: { featured: true },
+		include: { category: true },
+	});
+
+	res.status(200).json(new Result(true, '', { products }));
+});

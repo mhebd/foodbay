@@ -4,7 +4,11 @@ function Banner() {
   return (
     <div className='banner-wrapper'>
       <div className='banner'>
-        {/* <img src="image/slider-7.jpg" alt="" className="img-fluid banner-img"> */}
+        <img
+          src='src/components/user/assets/images/slider-7.jpg'
+          alt=''
+          className='img-fluid banner-img'
+        />
 
         <div className='overlay'></div>
 

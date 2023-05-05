@@ -18,7 +18,6 @@ const settings = {
 
 function Review() {
   const reviews = useSelector((state) => state.review.reviews);
-  console.log(reviews);
   const dispatch = useDispatch();
 
   useEffect(() => {

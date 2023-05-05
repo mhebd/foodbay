@@ -8,6 +8,7 @@ const {
 	deleteProduct,
 	updateProduct,
 	fetchSpecialProduct,
+	fetchFeaturedProduct,
 } = require('../controller/product');
 const router = express.Router();
 
@@ -32,5 +33,6 @@ router
 	.delete(private, limited, deleteProduct)
 	.put(private, limited, upload.single('image'), updateProduct);
 router.route('/special').get(fetchSpecialProduct);
+router.route('/featured').get(fetchFeaturedProduct);
 
 module.exports = router;
