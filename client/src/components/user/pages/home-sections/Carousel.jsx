@@ -35,7 +35,7 @@ function Carousel() {
                 <img
                   src={`http://localhost:5000/${slide.image}`}
                   alt=''
-                  className='img-fluid'
+                  className='img-fluid slider-img'
                 />
               </div>
             ))}

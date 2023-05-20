@@ -14,9 +14,12 @@ function Product({ products, rootClass }) {
           </div>
 
           <div className='card-body'>
-            <a href='single.html' className='view-in-single'>
+            {/* <a href='single.html' className='view-in-single'>
               <h4 className='product-name text-uppercase'>{p.name}</h4>
-            </a>
+            </a> */}
+            <h6 className='product-name mt-4 text-uppercase view-in-single'>
+              {p.name}
+            </h6>
             <p className='price lead'>
               TK <span>{+p.price - p.price * (p.discount / 100)}</span>
             </p>

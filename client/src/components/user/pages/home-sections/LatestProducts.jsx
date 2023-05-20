@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpecialProducts } from "../../../../actions/productActions";
 import Product from "../../../reusable/Product";
+import UserSectionHeading from "../../../reusable/UserSectionHeading";
+import SectionPageLink from "../../../reusable/SectionPageLink";
 
 function LatestProducts() {
   const { specialProducts } = useSelector((state) => state.product);
@@ -15,20 +17,12 @@ function LatestProducts() {
     <div className='latest-sectio-wrapper'>
       <div className='container'>
         <div className='latest-wrapper'>
-          <div className='section-heading text-center'>
-            <h2 className='section-hd text-uppercase'>latest products</h2>
-            <p className='section-pg text-capitalize'>
-              See our best food collection
-            </p>
-          </div>
-          {/* <!-- section heading end --> */}
+          <UserSectionHeading
+            title={"latest products"}
+            caption={"See our best food collection"}
+          />
 
-          <div className='section-page-link text-right'>
-            <a href='allproduct.html' className='page-link'>
-              See All Products <i className='fas fa-angle-double-right'></i>
-            </a>
-          </div>
-          {/* <!-- product page link end --> */}
+          <SectionPageLink link={"/"} />
 
           <div className='products-wrapper'>
             <div className='products'>
