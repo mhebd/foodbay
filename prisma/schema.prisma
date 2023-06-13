@@ -10,74 +10,93 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id Int @id @default(autoincrement())
-  name String 
-  email String @unique
+  id       Int        @id @default(autoincrement())
+  name     String
+  email    String     @unique
   password String
-  phone String @default("+8801XXXXXXXXX")
+  phone    String     @default("+8801XXXXXXXXX")
   gravatar String
-  role String @default("USER")
-  verified Boolean @default(false)
-  address Address?
-  created DateTime @default(now())
+  role     String     @default("USER")
+  verified Boolean    @default(false)
+  address  Address?
+  created  DateTime   @default(now())
+  Order    Order[] 
+  CartItem CartItem[]
 }
 
 model Address {
-  id Int @id @default(autoincrement())
+  id      Int     @id @default(autoincrement())
   country String?
-  city String?
-  zip Int?
+  city    String?
+  zip     Int?
   address String?
-  user User @relation(fields: [userId], references: [id])
-  userId Int @unique
+  user    User    @relation(fields: [userId], references: [id])
+  userId  Int     @unique
 }
 
 model Product {
-  id Int @id @default(autoincrement())
-  name String 
-  price Int 
-  image String
-  featured Boolean @default(false)
-  special Boolean @default(false)
-  discount Int @default(0)
-  category Category @relation(fields: [categoryId], references: [id])
-  categoryId Int 
-  created DateTime @default(now())
+  id         Int        @id @default(autoincrement())
+  name       String
+  price      Int
+  image      String
+  featured   Boolean    @default(false)
+  special    Boolean    @default(false)
+  discount   Int        @default(0)
+  category   Category   @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  created    DateTime   @default(now())
+  CartItem   CartItem[]
 }
 
 model Category {
-  id Int @id @default(autoincrement())
-  name String @unique
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
   products Product[]
 }
 
 model FeaturedCard {
-  id Int @id @default(autoincrement())
-  title String
+  id      Int      @id @default(autoincrement())
+  title   String
   caption String
-  icon String
+  icon    String
   created DateTime @default(now())
 }
 
 model Slider {
-  id Int @id @default(autoincrement())
-  image String 
+  id      Int      @id @default(autoincrement())
+  image   String
   caption String
   created DateTime @default(now())
 }
 
 model Review {
-  id Int @id @default(autoincrement())
-  name String
-  image String
+  id      Int      @id @default(autoincrement())
+  name    String
+  image   String
   opinion String
   created DateTime @default(now())
 }
 
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
+  user      User     @relation(fields: [userId], references: [id])
+  created   DateTime @default(now())
+  order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   Int?
+  userId    Int
+}
+
 model Order {
-  id Int @id @default(autoincrement())
-  
-  created DateTime @default(now())
+  id       Int        @id @default(autoincrement())
+  user     User       @relation(fields: [userId], references: [id])
+  userId   Int
+  products CartItem[]
+  status   String     @default("Created")
+  price    Int
+  address  String
+  created  DateTime   @default(now())
 }

@@ -31,8 +31,11 @@ app.use(error);
 if (process.env.NODE_ENV === 'development') {
 	app.use(express.static('client'));
 
+	app.get('dashboard/*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client/admin'));
+	});
 	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, 'client'));
+		res.sendFile(path.resolve(__dirname, 'client/user'));
 	});
 } else if (process.env.NODE_ENV === 'development') {
 	app.get('/', (req, res) => {
