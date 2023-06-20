@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/uploads')));
 
 // Route End Point
 app.use('/api/v1/user', require('./router/user'));
@@ -23,6 +23,7 @@ app.use('/api/v1/featured-card', require('./router/featuredCard'));
 app.use('/api/v1/slider', require('./router/slider'));
 app.use('/api/v1/review', require('./router/review'));
 app.use('/api/v1/product', require('./router/product'));
+app.use('/seed', require('./router/seed'));
 
 // Show Error Message
 app.use(error);
